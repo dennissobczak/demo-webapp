@@ -13,7 +13,7 @@ FROM docker.io/library/debian:trixie-slim
 
 RUN --mount=type=secret,id=token,env=TOKEN test -n "$TOKEN"
 
-RUN cat /run/secrets/token
+RUN ls /run/secrets/
 
 RUN echo $BUILD_TYPE_ARG
 RUN echo -n "HELLOOOO"
