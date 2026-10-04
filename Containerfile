@@ -11,8 +11,8 @@ RUN echo "noroot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/noroot
 USER root
 #USER noroot
 
-RUN --mount=type=secret,id=token cat /run/secrets/token
-#RUN cat /run/secrets/token
+RUN --mount=type=secret,id=token,env=TOKEN test -n "$TOKEN"
+
 RUN echo $BUILD_TYPE_ARG
 
 #ENV APP_NAME=demo-webapp
