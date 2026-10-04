@@ -12,7 +12,7 @@ USER root
 #USER noroot
 
 RUN --mount=type=secret,id=token cat /run/secrets/token
-RUN cat /run/secrets/token
+#RUN cat /run/secrets/token
 RUN echo $BUILD_TYPE_ARG
 
 #ENV APP_NAME=demo-webapp
