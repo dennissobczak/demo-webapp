@@ -11,6 +11,10 @@ RUN echo "noroot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/noroot
 USER root
 #USER noroot
 
+RUN --mount=type=secret,id=token cat /run/secrets/token
+RUN cat /run/secrets/token
+RUN echo $BUILD_TYPE_ARG
+
 #ENV APP_NAME=demo-webapp
 
 #RUN mkdir -p /home/noroot/go/pkg
@@ -23,5 +27,6 @@ WORKDIR /home/noroot/go/src
 
 #RUN go mod init ${APP_NAME}
 RUN go mod tidy
+
 
 CMD ["/bin/bash"]
