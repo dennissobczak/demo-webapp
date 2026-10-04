@@ -6,14 +6,15 @@ FROM docker.io/library/debian:trixie-slim
 #RUN apt-get dist-upgrade -y
 #RUN apt-get install -y golang sudo ca-certificates
 
-RUN useradd -u 8877 -s /bin/bash noroot
-RUN echo "noroot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/noroot
-USER root
+#RUN useradd -u 8877 -s /bin/bash noroot
+#RUN echo "noroot ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/noroot
+#USER root
 #USER noroot
 
 RUN --mount=type=secret,id=token,env=TOKEN test -n "$TOKEN"
 
 RUN echo $BUILD_TYPE_ARG
+RUN echo -n "HELLOOOO"
 
 #ENV APP_NAME=demo-webapp
 
